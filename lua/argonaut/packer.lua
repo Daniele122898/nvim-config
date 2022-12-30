@@ -116,4 +116,16 @@ use {
   end
 }
 
+use {
+    'windwp/nvim-ts-autotag',
+    config = function ()
+        require("nvim-ts-autotag").setup{}
+    end
+}
+
+-- Debug
+use 'mfussenegger/nvim-dap'
+use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+use 'theHamsta/nvim-dap-virtual-text'
+
 end)
