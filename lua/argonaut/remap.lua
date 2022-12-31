@@ -27,6 +27,9 @@ vim.keymap.set("n", "Q", "<nop>")
 -- replace word you're currently on
 vim.keymap.set("n", "<leader>wr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- ; eol hack... fight me
+vim.keymap.set("n", "<leader>;", "$a;<Esc>")
+
 -- buffer management
 vim.keymap.set("n", "<A-l>", ":bn<CR>")
 vim.keymap.set("n", "<A-h>", ":bp<CR>")
@@ -37,3 +40,8 @@ vim.keymap.set({"n", "t"}, "<C-l>", "<C-w>l")
 vim.keymap.set({"n", "t"}, "<C-h>", "<C-w>h")
 vim.keymap.set({"n", "t"}, "<C-j>", "<C-w>j")
 vim.keymap.set({"n", "t"}, "<C-k>", "<C-w>k")
+
+vim.keymap.set("n", "<C-Right>", "<C-w>>")
+vim.keymap.set("n", "<C-Left>", "<C-w><")
+vim.keymap.set("n", "<C-Up>", "<C-w>+")
+vim.keymap.set("n", "<C-Down>", "<C-w>-")
