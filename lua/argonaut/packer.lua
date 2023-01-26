@@ -73,7 +73,6 @@ use {
   end,
 }
 
--- using packer.nvim
 use {
     'akinsho/bufferline.nvim',
     tag = "v3.*",
@@ -127,5 +126,22 @@ use {
 use 'mfussenegger/nvim-dap'
 use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 use 'theHamsta/nvim-dap-virtual-text'
+
+
+-- TODO
+use {
+  "folke/todo-comments.nvim",
+  requires = "nvim-lua/plenary.nvim",
+  config = function()
+    require("todo-comments").setup {}
+  end
+}
+use {
+  "folke/trouble.nvim",
+  requires = "kyazdani42/nvim-web-devicons",
+  config = function()
+    require("trouble").setup {}
+  end
+}
 
 end)

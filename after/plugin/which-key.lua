@@ -11,4 +11,12 @@ wk.register({
     --["1"] = "which_key_ignore",  -- special label to hide it in the popup
    -- b = { function() print("bar") end, "Foobar" } -- you can also pass functions!
   },
+  t = {
+      f = "Terminal Float",
+      v = "Terminal Vertical",
+      h = "Terminal Horizontal",
+      t = "Trouble Toggle",
+      s = "Todo Telescope",
+      r = "Todo Trouble"
+  }
 }, { prefix = "<leader>" })
