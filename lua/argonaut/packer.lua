@@ -8,8 +8,12 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
-	  -- or                            , branch = '0.1.x',
+	  'nvim-telescope/telescope.nvim', tag = '0.1.4',
+	  requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  use {
+      'nvim-pack/nvim-spectre',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
@@ -31,6 +35,13 @@ return require('packer').startup(function(use)
   use('mbbill/undotree')
 
   use('tpope/vim-fugitive')
+
+  use{
+    'williamboman/mason.nvim',
+    config = function()
+          require("mason").setup()
+    end
+  }
 
   use {
   'VonHeikemen/lsp-zero.nvim',
@@ -54,10 +65,25 @@ return require('packer').startup(function(use)
   }
 }
 
+use 'nvim-tree/nvim-web-devicons'
+
 use {
   'nvim-lualine/lualine.nvim',
   requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 }
+
+use {
+  'jinh0/eyeliner.nvim',
+  config = function()
+    require'eyeliner'.setup {
+      highlight_on_key = true, -- show highlights only after keypress
+      dim = true              -- dim all other characters if set to true (recommended!)
+    }
+  end
+}
+
+use('kshenoy/vim-signature')
+use('github/copilot.vim')
 
 use {
     'numToStr/Comment.nvim',
@@ -115,12 +141,16 @@ use {
   end
 }
 
-use {
-    'windwp/nvim-ts-autotag',
-    config = function ()
-        require("nvim-ts-autotag").setup{}
-    end
-}
+use "HiPhish/rainbow-delimiters.nvim"
+use "lukas-reineke/indent-blankline.nvim"
+
+use({
+    "kdheepak/lazygit.nvim",
+    -- optional for floating window border decoration
+    requires = {
+        "nvim-lua/plenary.nvim",
+    },
+})
 
 -- Debug
 use 'mfussenegger/nvim-dap'
@@ -143,5 +173,16 @@ use {
     require("trouble").setup {}
   end
 }
+
+-- test
+use {
+  "nvim-neotest/neotest",
+  requires = {
+    "nvim-lua/plenary.nvim",
+    "nvim-treesitter/nvim-treesitter",
+    "antoinemadec/FixCursorHold.nvim"
+  }
+}
+use 'nvim-neotest/neotest-python'
 
 end)

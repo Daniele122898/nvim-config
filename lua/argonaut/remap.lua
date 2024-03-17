@@ -30,10 +30,23 @@ vim.keymap.set("n", "<leader>wr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
 -- ; eol hack... fight me
 vim.keymap.set("n", "<leader>;", "$a;<Esc>")
 
+-- C like todo comments
+vim.keymap.set("n", "<leader>Otc", "O// TODO: (daniele) ")
+vim.keymap.set("n", "<leader>otc", "o// TODO: (daniele) ")
+vim.keymap.set("n", "<leader>itc", "i// TODO: (daniele) ")
+-- Python like todo comments
+vim.keymap.set("n", "<leader>Otp", "O# TODO: (daniele) ")
+vim.keymap.set("n", "<leader>otp", "o# TODO: (daniele) ")
+vim.keymap.set("n", "<leader>itp", "i# TODO: (daniele) ")
+
+-- Save using CTRL+S
+vim.keymap.set("n", "<C-s>", ":w<CR>")
+
 -- buffer management
 vim.keymap.set("n", "<A-l>", ":bn<CR>")
 vim.keymap.set("n", "<A-h>", ":bp<CR>")
-vim.keymap.set("n", "<A-w>", ":bd<CR>")
+vim.keymap.set("n", "<A-w>", ":bp<bar>sp<bar>bn<bar>bd<CR>")
+vim.keymap.set("n", "<A-q>", ":q<CR>")
 
 -- window management
 vim.keymap.set({"n", "t"}, "<C-l>", "<C-w>l")
@@ -45,3 +58,19 @@ vim.keymap.set("n", "<C-Right>", "<C-w>>")
 vim.keymap.set("n", "<C-Left>", "<C-w><")
 vim.keymap.set("n", "<C-Up>", "<C-w>+")
 vim.keymap.set("n", "<C-Down>", "<C-w>-")
+
+vim.keymap.set("n", "<leader>C", ":Copilot<CR>")
+
+-- Git
+vim.keymap.set("n", "<leader>lg", ":LazyGit<CR>")
+
+-- build
+vim.keymap.set("n", "<leader>bb", ":make<CR>")
+vim.keymap.set("n", "<leader>bs", ":silent make<CR>")
+vim.keymap.set('n', '<leader>bf', function()
+    local project = vim.fn.input('Enter project to build: ', '', 'shellcmd')
+    vim.api.nvim_command('make ' .. project)
+end)
+vim.keymap.set("n", "<leader>cw", ":cwindow<CR>")
+vim.keymap.set("n", "<leader>cn", ":cnext<CR>")
+vim.keymap.set("n", "<leader>cp", ":cprev<CR>")
